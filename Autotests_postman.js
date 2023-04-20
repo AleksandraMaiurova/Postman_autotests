@@ -3,7 +3,7 @@ pm.sendRequest("https://api.hh.ru/suggests/skill_set?text=autocad", function (er
    pm.collectionVariables.set("ID", jsonData.items[0].id);
 });
 
-pm.sendRequest("https://api.hh.ru/suggests/areas?text=Нижний+новгород", function (err, response) {
+pm.sendRequest("https://api.hh.ru/suggests/areas?text=Санкт+петербург", function (err, response) {
    var jsonData = response.json(); 
    pm.collectionVariables.set("ID_metro", jsonData.items[0].id);
 });
@@ -34,23 +34,18 @@ pm.sendRequest({
 });
 
 pm.test("Body matches string", function () {
-    pm.expect(pm.response.text()).to.include("male");
+    pm.expect(pm.response.text()).to.include("статья");
 });
 pm.test("Response body is equal to a string", function () {
     var jsonData = pm.response.json();
-    pm.expect(jsonData.name).to.eql("Obi-Wan Kenobi");
+    pm.expect(jsonData.name).to.eql("Университет ИТМО");
 });
 pm.test("Status code name has string", function () {
     pm.response.to.have.status("OK");
 });
 
 pm.test("Body matches string", function () {
-    pm.expect(pm.response.text()).to.include("4900");
-});
-
-pm.test("Response body is equal to a string", function () {
-    var jsonData = pm.response.json();
-    pm.expect(jsonData.name).to.eql("Endor");
+    pm.expect(pm.response.text()).to.include("628426");
 });
 
 pm.test("Status code name has string", function () {
