@@ -1,18 +1,3 @@
-pm.sendRequest("https://api.hh.ru/suggests/skill_set?text=autocad", function (err, response) {
-   var jsonData = response.json(); 
-   pm.collectionVariables.set("ID", jsonData.items[0].id);
-});
-
-pm.sendRequest("https://api.hh.ru/suggests/areas?text=Санкт+петербург", function (err, response) {
-   var jsonData = response.json(); 
-   pm.collectionVariables.set("ID_metro", jsonData.items[0].id);
-});
-
-pm.sendRequest("https://api.hh.ru/employers?text=QA", function (err, response) {
-   var jsonData = response.json(); 
-   pm.collectionVariables.set("ID_employer", jsonData.items[0].id);
-});
-
 pm.sendRequest({
     url: 'https://isu.ifmo.ru/pls/apex/f?p=2437:3:105758445782604::NO::P3_LIST,P3_CLOSE_FILTER:0,1',
     method: 'POST', 
@@ -54,4 +39,19 @@ pm.test("Status code name has string", function () {
 
 pm.test("Response time is less than 150ms", function () {
     pm.expect(pm.response.responseTime).to.be.below(150);
+});
+
+pm.sendRequest("https://api.hh.ru/suggests/skill_set?text=autocad", function (err, response) {
+   var jsonData = response.json(); 
+   pm.collectionVariables.set("ID", jsonData.items[0].id);
+});
+
+pm.sendRequest("https://api.hh.ru/suggests/areas?text=Санкт+петербург", function (err, response) {
+   var jsonData = response.json(); 
+   pm.collectionVariables.set("ID_metro", jsonData.items[0].id);
+});
+
+pm.sendRequest("https://api.hh.ru/employers?text=QA", function (err, response) {
+   var jsonData = response.json(); 
+   pm.collectionVariables.set("ID_employer", jsonData.items[0].id);
 });
